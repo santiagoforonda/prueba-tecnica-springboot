@@ -32,11 +32,8 @@ public class Especialidad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
 
-
-    @NotNull(message = "El estado es obligatorio")
     @Enumerated(EnumType.STRING)
     private EstadoPersona estadoPersona;
 
