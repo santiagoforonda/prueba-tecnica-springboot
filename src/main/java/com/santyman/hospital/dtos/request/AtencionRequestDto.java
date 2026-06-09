@@ -1,6 +1,6 @@
 package com.santyman.hospital.dtos.request;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.santyman.hospital.model.EstadoPersona;
 import jakarta.persistence.EnumType;
@@ -13,7 +13,7 @@ import lombok.Data;
 public class AtencionRequestDto {
     
     @NotNull(message = "La fecha es obligatoria")
-    private LocalDate fecha;
+    private LocalDateTime fecha;
 
     @NotBlank(message = "El motivo es obligatorio")
     private String motivo;
