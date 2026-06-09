@@ -15,13 +15,13 @@ import com.santyman.hospital.model.Paciente;
 
 public interface IAtencionRepository extends JpaRepository<Atencion,Long> {
 
-    Page<Empleado> findByEstado(EstadoPersona estado, Pageable pageable);
+    Page<Atencion> findByEstado(EstadoPersona estado, Pageable pageable);
 
-    Page<Empleado> findByPaciente(Paciente paciente, Pageable pageable);
+    Page<Atencion> findByPaciente(Paciente paciente, Pageable pageable);
 
-    Page<Empleado> findByEmpleado(Empleado empleado, Pageable pageable);
+    Page<Atencion> findByEmpleado(Empleado empleado, Pageable pageable);
 
-    Page<Empleado> findByFecha(LocalDateTime inicio, LocalDateTime fin ,Pageable pageable);
+    Page<Atencion> findByFecha(LocalDateTime inicio, LocalDateTime fin ,Pageable pageable);
     
     @Query("SELECT a FROM Atencion AS a WHERE LOWER(a.motivo) LIKE LOWER(CONCAT('%', :motivo, '%'))")
     Page<Atencion> searchByMotivo(@Param("motivo") String motivo, Pageable pageable);

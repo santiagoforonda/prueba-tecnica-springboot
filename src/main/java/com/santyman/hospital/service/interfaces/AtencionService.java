@@ -1,6 +1,6 @@
 package com.santyman.hospital.service.interfaces;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,7 +23,7 @@ public interface AtencionService {
 
 	Page<AtencionResponseDto> listarPorEstado(EstadoPersona estado, Pageable pageable);
 
-	Page<AtencionResponseDto> listarPorRangoFechas(LocalDate fechaInicio, LocalDate fechaFin, Pageable pageable);
+	Page<AtencionResponseDto> listarPorRangoFechas(LocalDateTime fechaInicio, LocalDateTime fechaFin, Pageable pageable);
 
 	Page<AtencionResponseDto> buscarPorMotivo(String motivo, Pageable pageable);
 
@@ -31,5 +31,5 @@ public interface AtencionService {
 
 	void eliminarAtencion(Long id);
 
-	Page<AtencionResponseDto> listarAtencionesDelPacienteAutenticado(Pageable pageable);
+	Page<AtencionResponseDto> listarAtencionesDelPacienteAutenticado(String username,Pageable pageable);
 }

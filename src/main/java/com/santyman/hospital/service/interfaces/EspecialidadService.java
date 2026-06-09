@@ -5,7 +5,7 @@ import org.springframework.data.domain.Pageable;
 
 import com.santyman.hospital.dtos.request.EspecialidadRequestDto;
 import com.santyman.hospital.dtos.response.EspecialidadResponseDto;
-import com.santyman.hospital.model.EstadoPersona;
+
 
 public interface EspecialidadService {
 
@@ -19,5 +19,5 @@ public interface EspecialidadService {
 
 	Page<EspecialidadResponseDto> buscarPorNombre(String nombre, Pageable pageable);
 
-	Page<EspecialidadResponseDto> listarPorEstado(EstadoPersona estado, Pageable pageable);
+	Page<EspecialidadResponseDto> listarPorEstado(String estado, Pageable pageable);
 }

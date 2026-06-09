@@ -16,8 +16,6 @@ public interface AtencionMapper {
     @Mapping(source = "empleadoId", target = "empleado.id")
     Atencion toEntity(AtencionRequestDto dto);
 
-    @Mapping(source = "paciente.id", target = "pacienteId")
-    @Mapping(source = "empleado.id", target = "empleadoId")
     AtencionResponseDto toResponse(Atencion entity);
 
     @Mapping(source = "pacienteId", target = "paciente.id")

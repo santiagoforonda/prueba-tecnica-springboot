@@ -10,7 +10,7 @@ public class AtencionResponseDto {
 	private Long id;
 	private LocalDate fecha;
 	private String motivo;
-	private Long pacienteId;
-	private Long empleadoId;
+	private PacienteResponseDto pacienteId;
+	private EmpleadoResponseDto empleadoId;
 	private EstadoAtencion estado;
 }
