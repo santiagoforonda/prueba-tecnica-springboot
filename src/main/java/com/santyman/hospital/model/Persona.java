@@ -12,7 +12,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,23 +22,17 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "personas")
-@Builder
 public class Persona {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NotNull(message = "El id es obligatorio")
 	private Long id;
 
-	@NotBlank(message = "El nombre es obligatorio")
 	private String nombre;
 
-	@NotBlank(message = "El email es obligatorio")
 	@Column(unique = true)
-	@Email(message = "El email debe tener un formato válido")
 	private String email;
 
-	@NotNull(message = "El estado es obligatorio")
     @Enumerated(EnumType.STRING)
 	private EstadoPersona estado;
 }

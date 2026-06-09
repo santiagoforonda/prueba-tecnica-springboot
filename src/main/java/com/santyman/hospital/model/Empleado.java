@@ -38,14 +38,12 @@ public class Empleado {
     private Persona persona;
 
 
-    @NotNull(message = "El rol es obligatorio")
     @Enumerated(EnumType.STRING)
     private Roles rol;
 
-    @NotNull(message = "El estado es obligatorio")
     @Enumerated(EnumType.STRING)
     private EstadoPersona estado;
 
-    @OneToMany(mappedBy = "emepleado", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<MedicoEspecialidad> especialidades = new HashSet<>();
 }

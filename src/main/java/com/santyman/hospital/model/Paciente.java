@@ -34,11 +34,10 @@ public class Paciente {
     @JoinColumn(name = "persona_id", nullable = false,foreignKey = @ForeignKey(name="FK_paciente_persona"))
     private Persona persona;
 
-    @NotNull(message = "El rol es obligatorio")
     @Enumerated(EnumType.STRING)
     private Roles rol;
 
-    @NotNull(message = "El estado es obligatorio")
+
     @Enumerated(EnumType.STRING)
     private EstadoPersona estado;
 }
