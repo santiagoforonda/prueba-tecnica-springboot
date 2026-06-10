@@ -37,16 +37,10 @@ public class EmpleadosServiceImpl implements EmpleadosService {
 	@Override
 	@Transactional
 	public EmpleadoResponseDto crearEmpleado(EmpleadoRequestDto dto) {
-		if (dto.getPersonaId() == null) {
-			throw new InvalidRequestException("La persona es obligatoria");
-		}
+		
 
 		Persona persona = personaRepository.findById(dto.getPersonaId())
 				.orElseThrow(() -> new ResourceNotFoundException("Persona no encontrada con ese ID " + dto.getPersonaId()));
-
-		if (empleadoRepository.findByPersona(persona).isPresent()) {
-			throw new BusinesException("La persona ya tiene un empleado asociado");
-		}
 
 		Empleado empleado = empleadoMapper.toEntity(dto);
 		empleado.setPersona(persona);

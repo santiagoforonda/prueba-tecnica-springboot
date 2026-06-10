@@ -7,8 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.santyman.hospital.dtos.request.PacienteRequestDto;
 import com.santyman.hospital.dtos.response.PacienteResponseDto;
-import com.santyman.hospital.exceptions.BusinesException;
-import com.santyman.hospital.exceptions.InvalidRequestException;
 import com.santyman.hospital.exceptions.ResourceNotFoundException;
 import com.santyman.hospital.mapper.PacienteMapper;
 import com.santyman.hospital.model.Paciente;
@@ -32,16 +30,10 @@ public class PacienteServiceImpl implements PacienteService {
 	@Override
 	@Transactional
 	public PacienteResponseDto crearPaciente(PacienteRequestDto dto) {
-		if (dto.getPersonaId() == null) {
-			throw new InvalidRequestException("La persona es obligatoria");
-		}
-
+		
 		Persona persona = personaRepository.findById(dto.getPersonaId())
 				.orElseThrow(() -> new ResourceNotFoundException("Persona no encontrada con ese ID " + dto.getPersonaId()));
 
-		if (pacienteRepository.existsByPersona(persona)) {
-			throw new BusinesException("La persona ya tiene un paciente asociado");
-		}
 
 		Paciente paciente = pacienteMapper.toEntity(dto);
 		paciente.setPersona(persona);
@@ -65,23 +57,15 @@ public class PacienteServiceImpl implements PacienteService {
 		Paciente paciente = pacienteRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Paciente no encontrado con ese ID " + id));
 
-		if (dto.getPersonaId() == null) {
-			throw new InvalidRequestException("La persona es obligatoria");
-		}
-
 		Persona persona = personaRepository.findById(dto.getPersonaId())
 				.orElseThrow(() -> new ResourceNotFoundException("Persona no encontrada con ese ID " + dto.getPersonaId()));
 
-		if (!paciente.getPersona().getId().equals(persona.getId()) && pacienteRepository.existsByPersona(persona)) {
-			throw new BusinesException("La persona ya tiene un paciente asociado");
-		}
-
 		pacienteMapper.updateEntity(paciente, dto);
 		paciente.setPersona(persona);
-		paciente = pacienteRepository.save(paciente);
+		Paciente updatedPaciente = pacienteRepository.save(paciente);
 		log.info("Paciente actualizado. id={}", paciente.getId());
 
-		return pacienteMapper.toResponse(paciente);
+		return pacienteMapper.toResponse(updatedPaciente);
 	}
 
 	@Override
