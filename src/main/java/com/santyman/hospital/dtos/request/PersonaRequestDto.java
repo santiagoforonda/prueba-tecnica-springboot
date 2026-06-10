@@ -1,6 +1,6 @@
 package com.santyman.hospital.dtos.request;
 
-import com.santyman.hospital.model.EstadoAtencion;
+import com.santyman.hospital.model.EstadoPersona;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -19,6 +19,6 @@ public class PersonaRequestDto {
 
 
     @NotNull(message = "El email es obligatorio")
-    private EstadoAtencion estado;
+    private EstadoPersona estado;
     
 }

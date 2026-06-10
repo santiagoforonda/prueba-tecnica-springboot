@@ -12,14 +12,14 @@ import com.santyman.hospital.model.Atencion;
 @Mapper(config = IMapperConfig.class,uses = {PacienteMapper.class, EmpleadoMapper.class})
 public interface AtencionMapper {
 
-    @Mapping(source = "pacienteId", target = "paciente.id")
-    @Mapping(source = "empleadoId", target = "empleado.id")
+    @Mapping(source = "paciente", target = "paciente.id")
+    @Mapping(source = "empleado", target = "empleado.id")
     Atencion toEntity(AtencionRequestDto dto);
 
     AtencionResponseDto toResponse(Atencion entity);
 
-    @Mapping(source = "pacienteId", target = "paciente.id")
-    @Mapping(source = "empleadoId", target = "empleado.id")
+    @Mapping(source = "paciente", target = "paciente.id")
+    @Mapping(source = "empleado", target = "empleado.id")
     void updateEntity(@MappingTarget Atencion entity, AtencionRequestDto dto);
 
 }

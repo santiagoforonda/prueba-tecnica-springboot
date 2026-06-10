@@ -135,12 +135,12 @@ public class AtencionServiceImpl implements AtencionService {
         atencion.setMotivo(dto.getMotivo());
         atencion.setEstado(dto.getEstado());
 
-        if(dto.getPaciente() != null && !dto.getEmpleado().equals(atencion.getPaciente().getId())){
+        if(dto.getPaciente() != null && !dto.getPaciente().equals(atencion.getPaciente().getId())){
             atencion.setPaciente(pacienteRepository.findById(dto.getPaciente())
                     .orElseThrow(() -> new ResourceNotFoundException("Paciente no encontrado con id: " + dto.getPaciente())));
         }
 
-        if(dto.getEmpleado() != null && dto.getEmpleado().equals(atencion.getEmpleado().getId())){
+        if(dto.getEmpleado() != null && !dto.getEmpleado().equals(atencion.getEmpleado().getId())){
             atencion.setEmpleado(empleadoRepository.findById(dto.getEmpleado())
                     .orElseThrow(() -> new ResourceNotFoundException("Empleado no encontrado con id: " + dto.getEmpleado())));
         }
