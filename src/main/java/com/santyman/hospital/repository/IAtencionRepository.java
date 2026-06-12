@@ -10,12 +10,12 @@ import org.springframework.data.repository.query.Param;
 
 import com.santyman.hospital.model.Atencion;
 import com.santyman.hospital.model.Empleado;
-import com.santyman.hospital.model.EstadoPersona;
+import com.santyman.hospital.model.EstadoAtencion;
 import com.santyman.hospital.model.Paciente;
 
 public interface IAtencionRepository extends JpaRepository<Atencion,Long> {
 
-    Page<Atencion> findByEstado(EstadoPersona estado, Pageable pageable);
+    Page<Atencion> findByEstado(EstadoAtencion estado, Pageable pageable);
 
     Page<Atencion> findByPaciente(Paciente paciente, Pageable pageable);
 

@@ -7,7 +7,8 @@ import org.springframework.data.domain.Pageable;
 
 import com.santyman.hospital.dtos.request.AtencionRequestDto;
 import com.santyman.hospital.dtos.response.AtencionResponseDto;
-import com.santyman.hospital.model.EstadoPersona;
+import com.santyman.hospital.model.EstadoAtencion;
+
 
 public interface AtencionService {
 
@@ -21,7 +22,7 @@ public interface AtencionService {
 
 	Page<AtencionResponseDto> listarPorEmpleado(Long empleadoId, Pageable pageable);
 
-	Page<AtencionResponseDto> listarPorEstado(EstadoPersona estado, Pageable pageable);
+	Page<AtencionResponseDto> listarPorEstado(EstadoAtencion estado, Pageable pageable);
 
 	Page<AtencionResponseDto> listarPorRangoFechas(LocalDateTime fechaInicio, LocalDateTime fechaFin, Pageable pageable);
 

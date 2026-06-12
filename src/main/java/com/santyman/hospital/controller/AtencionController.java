@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.santyman.hospital.dtos.request.AtencionRequestDto;
 import com.santyman.hospital.dtos.response.AtencionResponseDto;
+import com.santyman.hospital.model.EstadoAtencion;
 import com.santyman.hospital.model.EstadoPersona;
 import com.santyman.hospital.service.interfaces.AtencionService;
 
@@ -80,7 +81,7 @@ public class AtencionController {
 
     @Operation(summary = "Listar atenciones por estado")
     @GetMapping("/estado/{estado}")
-    public ResponseEntity<Page<AtencionResponseDto>> listarPorEstado(@PathVariable EstadoPersona estado,
+    public ResponseEntity<Page<AtencionResponseDto>> listarPorEstado(@PathVariable EstadoAtencion estado,
             @ParameterObject Pageable pageable){
         return ResponseEntity.ok(atencionService.listarPorEstado(estado, pageable));
     }

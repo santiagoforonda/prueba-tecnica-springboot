@@ -35,11 +35,11 @@ public class Atencion {
 
 
     @Enumerated(EnumType.STRING)
-    private EstadoPersona estado;
+    private EstadoAtencion estado;
 
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "paciente_id", nullable = false, unique = true, foreignKey = @ForeignKey(name = "FK_atencion_paciente"))
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "paciente_id", nullable = false, foreignKey = @ForeignKey(name = "FK_atencion_paciente"))
     private Paciente paciente;
 
     

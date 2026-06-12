@@ -15,6 +15,7 @@ import com.santyman.hospital.exceptions.ResourceNotFoundException;
 import com.santyman.hospital.mapper.AtencionMapper;
 import com.santyman.hospital.model.Atencion;
 import com.santyman.hospital.model.Empleado;
+import com.santyman.hospital.model.EstadoAtencion;
 import com.santyman.hospital.model.EstadoPersona;
 import com.santyman.hospital.model.Paciente;
 import com.santyman.hospital.repository.IAtencionRepository;
@@ -89,7 +90,7 @@ public class AtencionServiceImpl implements AtencionService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<AtencionResponseDto> listarPorEstado(EstadoPersona estado, Pageable pageable) {
+    public Page<AtencionResponseDto> listarPorEstado(EstadoAtencion estado, Pageable pageable) {
         return atencionRepository.findByEstado(estado, pageable).map(atencionMapper::toResponse);
     }
 

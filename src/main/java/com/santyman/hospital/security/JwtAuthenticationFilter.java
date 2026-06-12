@@ -28,12 +28,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 		String token = getTokenFromRequest(request);
-
+		
 		if (token == null) {
-			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token no encontrado");
-			return;
-		}
-
+        filterChain.doFilter(request, response);
+        return;
+    }
 		try {
 			String username = jwtUtil.getUsernameFromToken(token);
 			UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);

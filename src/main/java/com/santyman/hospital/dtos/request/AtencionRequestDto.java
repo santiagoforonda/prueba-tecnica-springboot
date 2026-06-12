@@ -2,7 +2,7 @@ package com.santyman.hospital.dtos.request;
 
 import java.time.LocalDateTime;
 
-import com.santyman.hospital.model.EstadoPersona;
+import com.santyman.hospital.model.EstadoAtencion;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
@@ -20,7 +20,7 @@ public class AtencionRequestDto {
 
     @NotNull(message = "El estado de la atención es obligatorio")
     @Enumerated(EnumType.STRING)
-    private EstadoPersona estado;
+    private EstadoAtencion estado;
 
     @NotNull(message = "El paciente es obligatorio")
     private Long paciente;
